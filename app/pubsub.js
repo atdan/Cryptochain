@@ -29,7 +29,14 @@ class PubSub {
         
         switch (channel){
             case CHANNELS.BLOCKCHAIN:
-                this.blockchain.replaceChain(parsedMessage);
+                this.blockchain.replaceChain(parsedMessage, () => {
+                    // all successful transaction pools are cleared accross the network 
+                    // when a broadcasted blockchain is replaced
+                    this.transactionPool.clearBlockchainTransactions({
+                        
+                        chain: parsedMessage
+                    })
+                });
                 break;
             case CHANNELS.TRANSACTION:
                 this.transactionPool.setTransaction(parsedMessage)
