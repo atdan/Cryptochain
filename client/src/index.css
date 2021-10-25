@@ -31,7 +31,7 @@ body{
     margin: 5%;
 }
 
-.ConductTransaction{
+.ConductTransaction, .TransactionPool{
     margin: 10%;
 }
 

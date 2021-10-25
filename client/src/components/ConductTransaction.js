@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { FormGroup, FormControl, Button } from 'react-bootstrap';
+import history from '../history';
 
 class ConductTransaction extends Component {
     state = {recipient: '', amount: 0}
@@ -16,7 +17,7 @@ class ConductTransaction extends Component {
         const {recipient, amount} = this.state;
         console.log('conductTransaction', this.state)
 
-        fetch("http://localhost:3000/api/transact", {
+        fetch(`${document.location.origin}/api/transact`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,6 +28,7 @@ class ConductTransaction extends Component {
         .then(json => {
             console.log('json', json)
             alert(json.message || json.type)
+            history.push('/transaction-pool')
         })
     }
 
