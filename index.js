@@ -39,6 +39,7 @@ app.post('/api/mine', (req, res) => {
 
 app.post('/api/transact', (req, res) => {
     const {amount, recipient} = req.body;
+    // console.log('body recieved', this.body)
 
     let transaction = transactionPool.existingTransaction({inputAddress: wallet.publicKey});
     console.log("Transaction Exists", transaction)
