@@ -12,7 +12,7 @@ const TransactionMiner = require('./app/transaction-miner')
 const isDevelopment = process.env.ENV === 'development';
 const REDIS_URL = isDevelopment ? `redis://127.0.0.1:6379` : `redis://:pd60add82c5aba272acac439b14c4b1fe2f9ab5eb3a2d04ba438d74e09b463555@ec2-3-219-65-93.compute-1.amazonaws.com:18459`
 const DEFAULT_PORT = 3000;
-const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`
+const ROOT_NODE_ADDRESS = isDevelopment ? `http://localhost:${DEFAULT_PORT}` : `https://boiling-taiga-06548.herokuapp.com`
 
 const app = express();
 const blockchain = new Blockchain();
